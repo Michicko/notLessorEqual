@@ -55,3 +55,24 @@ exports.uploadImagesToCloud = catchAsync(async (req, res, next) => {
 
 	next();
 })
+
+// api - rate limited to 500 / month
+exports.deleteImagesFromCloudApi = catchAsync(async (req, res, next) => {
+	await cloudinary.api.delete_resources(req.public_ids, function (error, result) {
+		if (error) {
+			return next(error);
+		}
+	});
+	next();
+});
+
+// using delete single asset for multiple images
+exports.deleteImagesFromCloud = catchAsync(async (req, res, next) => {
+	const result = req.public_ids.map(async (public_id) => {
+		const resDat = await cloudinary.uploader.destroy(public_id);
+		return resDat;
+	});
+
+	const response = await Promise.all(result);
+	next();
+})
