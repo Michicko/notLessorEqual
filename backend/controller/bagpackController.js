@@ -1,14 +1,20 @@
 const catchAsync = require("../utils/catchAsync");
-
 const Bagpack = require("../model/bagpackModel");
-const { upload } = require("../utils/multer");
-const { uploadImagesToCloud } = require("../utils/cloudinary");
+const AppError = require("../utils/appError");
 
-// multer
-exports.uploadImages = upload;
+// get public ids for bagpack images to delete
+exports.getPublicIds = catchAsync(async (req, res, next) => {
+	const { id } = req.params;
+	const bagpack = await Bagpack.findById(id);
 
-// cloudinary
-exports.uploadToCloud = uploadImagesToCloud;
+	if (!bagpack) {
+		return next(new AppError("No bagpack found with that id", 404));
+	}
+
+	const public_ids = bagpack.images.map((img) => img.cloudinary_id);
+	req.public_ids = public_ids;
+	next();
+});
 
 exports.getBagpacks = catchAsync(async (req, res, next) => {
 	const bagpacks = await Bagpack.find({});
@@ -67,13 +73,11 @@ exports.updateBagpack = catchAsync(async (req, res, next) => {
 	});
 });   
 
+
+
 exports.deleteBagpack = catchAsync(async (req, res, next) => {
 	const { id } = req.params;
 	const bagpack = await Bagpack.findByIdAndDelete(id);
-
-	if (!bagpack) {
-		return next(new AppError("No bagpack found with that id", 404));
-	}
 
 	res.status(204).json({
 		status: "success",
