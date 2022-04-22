@@ -18,11 +18,11 @@ const Header = () => {
 									Custom bagpacks of natural leather and canvas
 								</h4>
 								<div className='header-btn-container'>
-									<button className='btn btn-primary header-btn'>
+									<button className='btn btn-secondary header-btn'>
 										Add to cart
 									</button>
 									<Link
-										className='btn btn-secondary header-btn'
+										className='btn btn-outline header-btn'
 										to='contact'
 										spy={true}
 										smooth={true}
