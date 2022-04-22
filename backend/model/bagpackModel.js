@@ -28,6 +28,11 @@ const bagpackSchema = new mongoose.Schema({
 		default: false,
 		required: [true, "A bagpack must have a feature"],
 	},
+	namePosition: {
+		type: String,
+		enum: ["top", "bottom"],
+		required: [true, "A bagpack must have a name position"],
+	},
 	slug: {
 		type: String,
 	},

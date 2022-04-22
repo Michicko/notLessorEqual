@@ -1,0 +1,60 @@
+.navigation{
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+}
+
+.navigation-logo{
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--light-color);
+  cursor: pointer;
+  margin-right: 12rem;
+}
+
+.nav-cart-icon{
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: var(--light-color) !important;
+  position:relative;
+}
+
+.nav-cart-btn{
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.navigation-nav{
+  margin-right: auto;
+}
+
+
+.nav-list{
+  list-style: none;
+  display: flex;
+}
+
+.nav-list>*:not(:last-child){
+  margin-right: 12rem;
+}
+
+.nav-item{
+  cursor: pointer;
+}
+
+.nav-link{
+  color: var(--primary-light-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-link:active, .nav-link.active{
+  color: var(--light-color);
+}

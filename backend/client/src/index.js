@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./css/index.css";
+import App from "./App";
+import { ProductsProvider } from "./contexts/products_context";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <ProductsProvider>
+     <App />
+  </ProductsProvider>,
+  document.getElementById("root")
 );
-
