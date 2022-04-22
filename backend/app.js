@@ -1,8 +1,17 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cors = require("cors");
 
 const globalErrorHandler = require('./controller/errorControllers');
+
+// cors
+app.use(
+	cors({
+		origin: "http://localhost:3000",
+		credentials: true, //access-control-allow-credentials:true
+	})
+);
 
 // middlewares
 app.use(express.json({ limit: '10kb' }));
