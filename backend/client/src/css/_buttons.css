@@ -13,13 +13,22 @@
   cursor: pointer;
 }
 
-.btn-primary{
+.btn-secondary{
   background: var(--primary-light-color);
   color: var(--light-color);
-
 }
 
-.btn-secondary{
+.btn-primary{
+  background: linear-gradient(to right, rgba(50, 47, 36, 0.7),rgba(122, 121, 97, .3));
+   color: var(--light-color);
+   transition: all .2s ease;
+}
+
+.btn-primary:hover{
+  background: linear-gradient(to right,rgba(122, 121, 97, .3), rgba(50, 47, 36, 0.7));
+}
+
+.btn-outline{
   background:transparent;
   border: 1px solid var(--primary-light-color);
   color: var(--primary-light-color);

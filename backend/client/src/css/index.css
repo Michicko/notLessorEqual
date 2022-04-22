@@ -5,9 +5,11 @@
 @import '_buttons.css';
 @import '_icons.css';
 @import '_utils.css';
+@import '_form.css';
 @import '_animations.css';
 
 
 /* components */
 @import '_header.css';
+@import '_contact.css';
 @import '_navigation.css';

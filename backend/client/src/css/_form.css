@@ -1,0 +1,99 @@
+.contact-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form>*:not(:last-child){
+  margin-bottom: 1.5rem;
+}
+
+.text-input{
+  padding: 1.5rem;
+  outline: none;
+  border: none;
+  background: rgba(255, 243, 232, .2);
+  color: var(--primary-dark-color);
+  font-size: 1.4rem;
+}
+
+.text-input::placeholder{
+  color: var(--primary-dark-color);
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.form-group{
+  width: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.form-control{
+  display: flex;
+  align-items:center;
+}
+
+.tc-text{
+  color: rgba(255, 243, 232, .5);
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.cheky-box{
+   height: 1.5rem;
+   width: 1.5rem;
+   border: 1px solid var(--light-color);
+   border: 1px solid rgba(255, 243, 232, .5);
+   display: block;
+   margin-right: 1.5rem;
+   position: relative;
+}
+
+.cheky-box::before,
+.cheky-box::after{
+  position: absolute;
+  content: '';
+  display: block;
+  height: 2px;
+ 
+  transform-origin: center;
+}
+
+.cheky-box::before{
+top: 60%;
+left:1px;
+ width: .5rem;
+transform:translateY(-50%) rotate(48deg);
+}
+
+.cheky-box::after{
+  top: 50%;
+  right:0 ;
+  width: 1rem;
+transform:translateY(-50%) rotate(-45deg);
+}
+
+.cheky-box:hover{
+  background: rgba(255, 243, 232, .2);
+}
+
+.form-checky:checked ~ .cheky-box{
+  background: rgba(255, 243, 232, .2);
+}
+
+.form-checky:checked ~ .cheky-box:before{
+  background: var(--primary-dark-color);
+}
+.form-checky:checked ~ .cheky-box:after{
+  background: var(--primary-dark-color);
+}
+
+.form-checky{
+  height: 0;
+  width: 0;
+  display: none;
+}
