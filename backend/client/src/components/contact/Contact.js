@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm"
 
 const Contact = () => {
   return (
-		<section className='contact-section'>
+		<section className='contact-section' id="contact">
 			<div className='container'>
 				<div className='contact-content'>
 					<h2 className='secondary-heading pg-heading'>Contact us</h2>
