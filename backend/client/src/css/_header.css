@@ -168,6 +168,9 @@ letter-spacing: 0;
 opacity: 0;
 margin-left: 1rem;
 
+-webkit-writing-mode: tb-rl; 
+-ms-writing-mode: tb-rl;
+
 }
 
 .header-slide.top .header-slider-name {
