@@ -1,5 +1,11 @@
 @font-face {
   font-family: "Tirong";
+  src: url("../assets/fonts/TrirongThin250.ttf") format("truetype");
+  font-weight: 250;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Tirong";
   src: url("../assets/fonts/TrirongLight300.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;

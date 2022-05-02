@@ -17,11 +17,20 @@
   font-size: 1.4rem;
 }
 
+.text-input.light{
+   color: rgba(255, 243, 232, .6);
+}
+
 .text-input::placeholder{
   color: var(--primary-dark-color);
   font-size: 1.4rem;
   text-transform: capitalize;
   font-weight: 400;
+}
+
+.text-input.light::placeholder{
+   color: rgba(255, 243, 232, .6);
+   font-weight: 250;
 }
 
 .form-group{
@@ -96,4 +105,51 @@ transform:translateY(-50%) rotate(-45deg);
   height: 0;
   width: 0;
   display: none;
+}
+
+.check-text{
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--light-color);
+  text-transform: uppercase;
+  line-height: 0;
+
+  margin-left: 1rem;
+}
+
+.input-radio{
+  height:0 ;
+  width: 0;
+  display: none;
+}
+
+.radio-label{
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid var(--light-color);
+  position: relative;
+}
+
+.radio-label::before{
+  display: none;
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height:0.75rem;
+  width:0.75rem;
+  background: var(--light-color);
+}
+
+.input-radio:checked ~ .radio-label::before{
+  display: block;
+}
+
+.radio-box{
+  display: flex;
+  align-items: center;
+  margin-right: 4rem;
 }
