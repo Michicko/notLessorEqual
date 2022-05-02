@@ -1,9 +1,11 @@
 import { Link } from 'react-scroll';
 import { ReactComponent as CartIcon } from '../../assets/images/cart.svg';
+import { useCartContext } from '../../contexts/cart_context';
 import navlinks from "../../utils/navlinks";
 import Navlink from './Navlink';
 
 const Navigation = () => {
+  const { openCart } = useCartContext();
   return (
     <div className="navigation">
       {/* mobile btn */}
@@ -29,7 +31,7 @@ const Navigation = () => {
         </ul>
       </nav>
       {/* cart btn */}
-      <button className="nav-cart-btn">
+      <button className="nav-cart-btn" onClick={openCart}>
         <CartIcon className='nav-cart-icon'/>
       </button>
   </div>

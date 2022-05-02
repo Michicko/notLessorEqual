@@ -25,3 +25,10 @@ font-family: Tirong;
   font-weight: 400;
   color: var(--primary-light-color);
 }
+
+.form-text{
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--light-color);
+  margin-bottom: 1rem;
+}

@@ -56,7 +56,7 @@
 .slide-btn:hover,
 .slide-btn:active,
 .slide-btn.active {
-	background: var(--primary-dark-color);
+	background: var(--primary-light-color);
 }
 
 .slide-btn:hover
@@ -69,7 +69,7 @@
 .slider-btn-icon {
 	height: 2.5rem;
 	width: 2.5rem;
-	color: var(--primary-dark-color);
+	color: var(--primary-light-color)
 }
 
 .slide-btn-box {
