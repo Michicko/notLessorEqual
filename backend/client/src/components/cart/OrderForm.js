@@ -1,12 +1,35 @@
+import { useEffect, useRef, useState } from "react";
+
 const OrderForm = () => {
+	const [currentRequired, setCurrentRequired] = useState('');
+	const [submittingForm, setSubmittingForm] = useState(false);
+	const deliveryInp = useRef(null);
+	const paymentInp = useRef(null);
+	const form = useRef(null);
+
+	useEffect(() => {
+
+	}, [])
+
+
+	const OrderBagpack = (e) => {
+		e.preventDefault();
+		// setSubmittingForm(true);
+		if (!deliveryInp.current.validity.valid) {
+				console.log("Delivery");
+		}
+			
+	}
+
 	return (
-		<form className='order-form'>
+		<form className='order-form' ref={form} onSubmit={OrderBagpack}>
 			<input
 				type='text'
 				name='name'
 				id='name'
 				className='text-input light'
 				placeholder='name'
+				required
 			/>
 			<input
 				type='email'
@@ -14,6 +37,7 @@ const OrderForm = () => {
 				id='email'
 				className='text-input light'
 				placeholder='email'
+				required
 			/>
 			<input
 				type='tel'
@@ -21,6 +45,7 @@ const OrderForm = () => {
 				id='phone'
 				className='text-input light'
 				placeholder='telephone'
+				required
 			/>
 			<input
 				type='text'
@@ -28,10 +53,16 @@ const OrderForm = () => {
 				id='address'
 				className='text-input light'
 				placeholder='address'
+				required
 			/>
 			{/* delivery */}
 			<div className='form-inner-container'>
-				<h4 className='form-text'>Choose the way of delivery</h4>
+				<h4 className='form-text'>
+					Choose the way of delivery{" "}
+					{currentRequired === "delivery" ? (
+						<span className='req'>* select delivery option</span>
+					) : null}
+				</h4>
 				<div className='form-control'>
 					<div className='radio-box'>
 						<input
@@ -39,6 +70,8 @@ const OrderForm = () => {
 							name='delivery'
 							id='ems'
 							className='input-radio'
+							required
+							ref={deliveryInp}
 						/>
 						<label htmlFor='ems' className='radio-label'></label>
 						<span className='check-text'>Ems</span>
@@ -69,7 +102,12 @@ const OrderForm = () => {
 
 			{/* payment */}
 			<div className='form-inner-container'>
-				<h4 className='form-text'>Choose the way of payment</h4>
+				<h4 className='form-text'>
+					Choose the way of payment{" "}
+					{currentRequired === "payment" ? (
+						<span className='req'>* select payment option</span>
+					) : null}
+				</h4>
 				<div className='form-control'>
 					<div className='radio-box'>
 						<input
@@ -77,6 +115,8 @@ const OrderForm = () => {
 							name='payment'
 							id='cash'
 							className='input-radio'
+							required
+							ref={paymentInp}
 						/>
 						<label htmlFor='cash' className='radio-label'></label>
 						<span className='check-text'>cash</span>
@@ -113,7 +153,9 @@ const OrderForm = () => {
 					className='text-input light'
 					placeholder='coupon'
 				/>
-				<button className='btn btn-primary order-btn'>Order</button>
+				<button type='submit' className='btn btn-primary order-btn'>
+					Order
+				</button>
 			</div>
 		</form>
 	);
