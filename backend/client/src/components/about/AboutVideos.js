@@ -61,9 +61,36 @@ const AboutVideos = ({ videoList, currentIndex, setCurrentIndex }) => {
 	};
 	return (
 		<div className='about-videos'>
-			<Slider {...settings}>
-				{videoList.map((video, i) => {
-					if (video.type === "image") {
+			<div className='about-slider-box'>
+				<Slider {...settings}>
+					{videoList.map((video, i) => {
+						if (video.type === "image") {
+							return (
+								<div
+									className={
+										i === currentIndex
+											? "about-video-box current"
+											: "about-video-box"
+									}
+									key={i}
+								>
+									<figure className='about-dummy-vid'>
+										<img
+											src={
+												require(`../../assets/images/${video.name}.jpg`).default
+											}
+											alt=''
+											className='about-dummy-img'
+										/>
+									</figure>
+									<div className='about-video-ctrl'>
+										<BiPlay className='about-ctrl-icon' />
+									</div>
+									<h4 className='about-video-caption'>{video.name}</h4>
+								</div>
+							);
+						}
+
 						return (
 							<div
 								className={
@@ -73,47 +100,24 @@ const AboutVideos = ({ videoList, currentIndex, setCurrentIndex }) => {
 								}
 								key={i}
 							>
-								<figure className='about-dummy-vid'>
-									<img
+								<video className='about-video'>
+									<source
 										src={
-											require(`../../assets/images/${video.name}.jpg`).default
+											require(`../../assets/videos/${video.name}.mp4`).default
 										}
-										alt=''
-										className='about-dummy-img'
-									/>
-								</figure>
+										type='video/mp4'
+									></source>
+									Sorry, your browser doesn't support embedded videos.
+								</video>
 								<div className='about-video-ctrl'>
 									<BiPlay className='about-ctrl-icon' />
 								</div>
 								<h4 className='about-video-caption'>{video.name}</h4>
 							</div>
 						);
-					}
-
-					return (
-						<div
-							className={
-								i === currentIndex
-									? "about-video-box current"
-									: "about-video-box"
-							}
-							key={i}
-						>
-							<video className='about-video'>
-								<source
-									src={require(`../../assets/videos/${video.name}.mp4`).default}
-									type='video/mp4'
-								></source>
-								Sorry, your browser doesn't support embedded videos.
-							</video>
-							<div className='about-video-ctrl'>
-								<BiPlay className='about-ctrl-icon' />
-							</div>
-							<h4 className='about-video-caption'>{video.name}</h4>
-						</div>
-					);
-				})}
-			</Slider>
+					})}
+				</Slider>
+			</div>
 		</div>
 	);
 };
