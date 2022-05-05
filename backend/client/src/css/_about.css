@@ -113,9 +113,9 @@ box-shadow: -4px 4px 14px 5px rgba(0,0,0,0.3);
 .about-video-box.current .about-video,
  .about-video-box.current .about-dummy-vid{
   filter: brightness(1);
-  /* height: 18rem;
-  object-fit: cover; */
-    /* margin-top: -2rem; */
+  height: 18rem;
+  object-fit: cover;
+    margin-top: -2rem;
 }
 
 
@@ -156,13 +156,24 @@ box-shadow: -4px 4px 14px 5px rgba(0,0,0,0.3);
 }
 
 .about-videos{
+  height: 22rem;
   width: 100%;
   align-items: center;
+  overflow: hidden;
+  position: relative;
+}
 
+.about-slider-box{
+  height: 18rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* slider */
 .slick-list{
-  /* overflow-y: auto !important; */
-  /* overflow: unset !important; */
+  overflow-y: auto !important;
+  overflow: unset !important;
 }
