@@ -19,6 +19,14 @@ const bagpackSchema = new mongoose.Schema({
 		type: String,
 		required: [true, "A bagpack must have a size"],
 	},
+	description: {
+		type: String,
+		required: [true, "A bagpack must have a description"],
+	},
+	stock: {
+		type: Number,
+		required: [true, "A bagpack must have available unit"],
+	},
 	price: {
 		type: Number,
 		required: [true, "A bagpack must have a price"],
