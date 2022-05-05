@@ -21,14 +21,28 @@
   height: 2.5rem;
   width: 2.5rem;
   fill: var(--light-color) !important;
-  position:relative;
+}
+
+.nav-cart-item-totals{
+  display: block;
+  padding: .25rem .5rem;
+  font-size: .8rem;
+  font-weight: 250;
+  color: var(--light-color);
+  background: var(--primary-light-color);
+  position: absolute;
+  border-radius: 50%;
+  right: -.5rem;
+  top: -.5rem;
 }
 
 .nav-cart-btn{
+   position:relative;
   background: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+  margin-right: 1rem;
 }
 
 .navigation-nav{
