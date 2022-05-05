@@ -1,59 +1,29 @@
 import { FiChevronDown } from "react-icons/fi";
+import { useProductsContext } from "../../contexts/products_context";
 
 const CatalogSlider = () => {
+	const { products, current_catalog_slide_index } = useProductsContext();
+
 	return (
 		<>
 			<div className='catalog-slider'>
 				<div className='slides'>
-					<div className='slide'>
-						<img src={require('../../assets/images/095-2020-1.jpg').default} alt='095-2020' className='slide-img' />
-						<h4 className='slide-name'>095-2020</h4>
-						<p className='slide-text'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-							non ut error ratione suscipit ipsa. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						</p>
-					</div>
-					<div className='slide current'>
-						<img src={require('../../assets/images/095-2020-1.jpg').default} alt='095-2020' className='slide-img' />
-						<h4 className='slide-name'>095-2020</h4>
-						<p className='slide-text'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-							non ut error ratione suscipit ipsa. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						</p>
-					</div>
-					<div className='slide'>
-						<img src={require('../../assets/images/095-2020-1.jpg').default} alt='095-2020' className='slide-img' />
-						<h4 className='slide-name'>095-2020</h4>
-						<p className='slide-text'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-							non ut error ratione suscipit ipsa. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						</p>
-					</div>
-					<div className='slide'>
-						<img src={require('../../assets/images/095-2020-1.jpg').default} alt='095-2020' className='slide-img' />
-						<h4 className='slide-name'>095-2020</h4>
-						<p className='slide-text'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-							non ut error ratione suscipit ipsa. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						</p>
-					</div>
-					<div className='slide'>
-						<img src={require('../../assets/images/095-2020-1.jpg').default} alt='095-2020' className='slide-img' />
-						<h4 className='slide-name'>095-2020</h4>
-						<p className='slide-text'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-							non ut error ratione suscipit ipsa. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						</p>
-					</div>
-					<div className='slide'>
-						<img src={require('../../assets/images/095-2020-1.jpg').default} alt='095-2020' className='slide-img' />
-						<h4 className='slide-name'>095-2020</h4>
-						<p className='slide-text'>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-							non ut error ratione suscipit ipsa. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-						</p>
-					</div>
-				
+					{products.map((product, i) => {
+						const { name, images, description } = product;
+
+						return (
+							<div
+								className={
+									current_catalog_slide_index === i ? "slide current" : "slide"
+								}
+								key={i}
+							>
+								<img src={images[0].url} alt={name} className='slide-img' />
+								<h4 className='slide-name'>{name}</h4>
+								<p className='slide-text'>{description}</p>
+							</div>
+						);
+					})}					
 				</div>
 			</div>
 			<div className='catalog-slider-dummy'>
