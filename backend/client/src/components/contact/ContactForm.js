@@ -7,6 +7,7 @@ const ContactForm = () => {
 				id='name'
 				className='text-input'
 				placeholder='name'
+				required
 			/>
 			<input
 				type='email'
@@ -14,13 +15,15 @@ const ContactForm = () => {
 				id='email'
 				className='text-input'
 				placeholder='email'
+				required
 			/>
 			<input
-				type='text'
+				type='tel'
 				name='phone'
 				id='phone'
 				className='text-input'
 				placeholder='telephone'
+				required
 			/>
 			<input
 				type='text'
@@ -28,6 +31,7 @@ const ContactForm = () => {
 				id='message'
 				className='text-input'
 				placeholder='message'
+				required
 			/>
 			<div className='form-group'>
 				<div className='form-control'>

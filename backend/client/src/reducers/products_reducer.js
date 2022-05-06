@@ -6,6 +6,9 @@ import {
 	PREVIOUS_HEADER_SLIDE,
 	SET_HEADER_SLIDE_INDEX,
 	SET_HEADER_SLIDE_PRODUCT,
+	NEXT_CATALOG_SLIDE,
+	PREVIOUS_CATALOG_SLIDE,
+	SET_CATALOG_SLIDE_PRODUCT,
 } from "../Action";
 
 const ProductReducer = (state, action) => {
@@ -31,6 +34,9 @@ const ProductReducer = (state, action) => {
 		const current_header_slide_product =
 			featured_products[state.current_header_slide_index];
 
+		const current_catalog_slide_product =
+			products[state.current_catalog_slide_index];
+
 		return {
 			...state,
 			products_loading: false,
@@ -38,6 +44,7 @@ const ProductReducer = (state, action) => {
 			products,
 			featured_products,
 			current_header_slide_product,
+			current_catalog_slide_product,
 		};
 	}
 
@@ -86,6 +93,30 @@ const ProductReducer = (state, action) => {
 			...state,
 			current_header_slide_index: index,
 		};
+	}
+
+	if (action.type === NEXT_CATALOG_SLIDE) {
+		let current_catalog_slide_index = state.current_catalog_slide_index;
+		current_catalog_slide_index = state.current_catalog_slide_index + 1;
+		if (state.current_catalog_slide_index >= state.products.length - 1) {
+			current_catalog_slide_index = state.products.length - 1;
+		}
+		return { ...state, current_catalog_slide_index };
+	}
+
+	if (action.type === PREVIOUS_CATALOG_SLIDE) {
+		let current_catalog_slide_index = state.current_catalog_slide_index;
+		current_catalog_slide_index = state.current_catalog_slide_index - 1;
+		if (state.current_catalog_slide_index <= 0) {
+			current_catalog_slide_index = 0;
+		}
+		return { ...state, current_catalog_slide_index };
+	}
+
+	if (action.type === SET_CATALOG_SLIDE_PRODUCT) {
+		const current_catalog_slide_product =
+			state.products[state.current_catalog_slide_index];
+		return { ...state, current_catalog_slide_product };
 	}
 
 	return `No matching action ${action.type}`;
