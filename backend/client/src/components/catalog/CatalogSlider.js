@@ -1,10 +1,12 @@
 import { FiChevronDown } from "react-icons/fi";
 import { useProductsContext } from "../../contexts/products_context";
 
-const CatalogSlider = ({ slidesBox }) => {
-		
+const CatalogSlider = ({
+	slidesBox,
+	is_display_box_opened,
+	openDisplayBox,
+}) => {
 	const { products, current_catalog_slide_index } = useProductsContext();
-
 
 	return (
 		<>
@@ -31,7 +33,11 @@ const CatalogSlider = ({ slidesBox }) => {
 			<div className='catalog-slider-dummy'>
 				<div className='slide-dummy'>
 					<div className='slide-btn-shadow'></div>
-					<button className='slide-btn' type='button'>
+					<button
+						className={is_display_box_opened ? "slide-btn active" : "slide-btn"}
+						type='button'
+						onClick={openDisplayBox}
+					>
 						<FiChevronDown className='slider-btn-icon' />
 					</button>
 				</div>

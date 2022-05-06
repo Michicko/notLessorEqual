@@ -51,12 +51,15 @@
 	align-items: center;
 	justify-content: center;
 	z-index: 45;
+
 }
 
 .slide-btn:hover,
 .slide-btn:active,
 .slide-btn.active {
 	background: var(--primary-light-color);
+	box-shadow:  5px 5px 10px #5c5c5c,
+             -5px -5px 10px rgb(255, 255, 255, .2);
 }
 
 .slide-btn:hover
@@ -204,10 +207,17 @@ color: var(--light-color);
 		position: relative;
 		width: auto;
 		margin: 2rem -8rem;
-		height: 70rem;
+		height: 0;
+		overflow: auto;
 		display: flex;
 		align-items: center;
 	}
+
+	.product-display-box.show{
+		height: 70rem;
+	}
+
+
 
 	.product-display-bg{
 		height: 35rem;
