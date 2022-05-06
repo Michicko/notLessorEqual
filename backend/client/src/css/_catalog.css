@@ -116,7 +116,7 @@ left: 0;
 left: 54rem;
 display: flex;
 justify-content: center;
-transition: all .7s ease;
+transition: all 1.5s ease;
 z-index: 15;
 }
 

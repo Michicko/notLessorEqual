@@ -3,8 +3,11 @@ import {
 	GET_PRODUCTS_BEGINS,
 	GET_PRODUCTS_ERROR,
 	GET_PRODUCTS_SUCCESS,
+	NEXT_CATALOG_SLIDE,
 	NEXT_HEADER_SLIDE,
+	PREVIOUS_CATALOG_SLIDE,
 	PREVIOUS_HEADER_SLIDE,
+	SET_CATALOG_SLIDE_PRODUCT,
 	SET_HEADER_SLIDE_INDEX,
 	SET_HEADER_SLIDE_PRODUCT,
 } from "../Action";
@@ -19,6 +22,8 @@ const initialState = {
 	featured_products: [],
 	current_header_slide_index: 0,
 	current_header_slide_product: {},
+	current_catalog_slide_index: 2,
+	current_catalog_slide_product: {}
 };
 
 const ProductsContext = createContext();
@@ -41,9 +46,21 @@ export const ProductsProvider = ({ children }) => {
 		dispatch({ type: SET_HEADER_SLIDE_INDEX, payload: index });
 	};
 
+	const nextCatalogSlide = () => {
+		dispatch({ type: NEXT_CATALOG_SLIDE });
+	};
+
+	const prevCatalogSlide = () => {
+		dispatch({ type: PREVIOUS_CATALOG_SLIDE	 });
+	};
+
 	useEffect(() => {
 		dispatch({ type: SET_HEADER_SLIDE_PRODUCT });
 	}, [state.current_header_slide_index])
+
+	useEffect(() => {
+		dispatch({ type: SET_CATALOG_SLIDE_PRODUCT });
+	}, [state.current_catalog_slide_index])
 
 	useEffect(() => {
 		const getProducts = async () => {
@@ -71,7 +88,14 @@ export const ProductsProvider = ({ children }) => {
 
 	return (
 		<ProductsContext.Provider
-			value={{ ...state, nextHeaderSlide, prevHeaderSlide, selectHeaderSlide }}
+			value={{
+				...state,
+				nextHeaderSlide,
+				prevHeaderSlide,
+				selectHeaderSlide,
+				nextCatalogSlide,
+				prevCatalogSlide,
+			}}
 		>
 			{children}
 		</ProductsContext.Provider>

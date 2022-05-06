@@ -1,12 +1,14 @@
 import { FiChevronDown } from "react-icons/fi";
 import { useProductsContext } from "../../contexts/products_context";
 
-const CatalogSlider = () => {
+const CatalogSlider = ({ slidesBox }) => {
+		
 	const { products, current_catalog_slide_index } = useProductsContext();
+
 
 	return (
 		<>
-			<div className='catalog-slider'>
+			<div className='catalog-slider' ref={slidesBox}>
 				<div className='slides'>
 					{products.map((product, i) => {
 						const { name, images, description } = product;
@@ -23,7 +25,7 @@ const CatalogSlider = () => {
 								<p className='slide-text'>{description}</p>
 							</div>
 						);
-					})}					
+					})}
 				</div>
 			</div>
 			<div className='catalog-slider-dummy'>
