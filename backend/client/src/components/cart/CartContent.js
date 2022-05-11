@@ -56,7 +56,7 @@ const CartContent = () => {
 										</button>
 									</div>
 								</div>
-								<h4 className='cart-item-total-price'>${price}</h4>
+								<h4 className='cart-item-total-price'>${amount * price}</h4>
 								<button
 									className='cart-item-btn remove'
 									onClick={() => remove_bagpack_from_cart(_id)}

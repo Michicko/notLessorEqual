@@ -9,6 +9,8 @@ import {
 	NEXT_CATALOG_SLIDE,
 	PREVIOUS_CATALOG_SLIDE,
 	SET_CATALOG_SLIDE_PRODUCT,
+	SET_MOBILE,
+	SET_DESKTOP,
 } from "../Action";
 
 const ProductReducer = (state, action) => {
@@ -118,6 +120,14 @@ const ProductReducer = (state, action) => {
 			state.products[state.current_catalog_slide_index];
 		return { ...state, current_catalog_slide_product };
 	}
+
+		if (action.type === SET_MOBILE) {
+			return { ...state, isMobile: true };
+		}
+
+		if (action.type === SET_DESKTOP) {
+			return { ...state, isMobile: false };
+		}
 
 	return `No matching action ${action.type}`;
 };

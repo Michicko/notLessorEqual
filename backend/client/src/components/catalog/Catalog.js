@@ -86,7 +86,7 @@ const Catalog = () => {
 					</div>
 
 					{/* selected product display */}
-					<div className='product-display-box' ref={dispBox}>
+					<div className='product-display-box ' ref={dispBox}>
 						{current_catalog_slide_product && <CatalogProductDisplay />}
 					</div>
 				</div>

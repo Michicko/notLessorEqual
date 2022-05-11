@@ -6,7 +6,7 @@ const CatalogSlider = ({
 	is_display_box_opened,
 	openDisplayBox,
 }) => {
-	const { products, current_catalog_slide_index } = useProductsContext();
+	const { products, current_catalog_slide_index, isMobile } = useProductsContext();
 
 	return (
 		<>
@@ -24,7 +24,7 @@ const CatalogSlider = ({
 							>
 								<img src={images[0].url} alt={name} className='slide-img' />
 								<h4 className='slide-name'>{name}</h4>
-								<p className='slide-text'>{description}</p>
+								<p className='slide-text'>{isMobile ? description.substring(1, 110) : description}</p>
 							</div>
 						);
 					})}
