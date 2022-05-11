@@ -1,7 +1,26 @@
-
-
-.container{
-  height: 100%;
-  width: 100%;
-  padding: 0 8rem;
+.container {
+	height: 100%;
+	width: 100%;
+	padding: 0 8rem;
+	overflow: hidden;
 }
+
+@media only screen and (max-width: 75rem) {
+	.container {
+		padding: 0 6rem;
+	}
+}
+
+@media only screen and (max-width: 50rem) {
+	.container {
+		padding: 0 4rem;
+	}
+}
+
+@media only screen and (max-width: 31.25rem) {
+	.container {
+		padding: 0 2rem;
+	}
+}
+
+

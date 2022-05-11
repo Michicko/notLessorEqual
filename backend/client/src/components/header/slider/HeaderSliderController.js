@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useProductsContext } from "../../../contexts/products_context";
 import HeaderSliderBtns from "./HeaderSliderBtns";
 
@@ -7,27 +7,36 @@ const HeaderSliderController = () => {
 		useProductsContext();
 	const signalsBox = useRef(null);
 
-	useEffect(() => {
-		const slideIndicator = () => {
-			if (featured_products.length > 0 || current_header_slide_index) {
-				const signals = document.querySelectorAll(".header-signal");
-				const indicator = document.querySelector(".header-signal-indi");
-				const currentIndex = current_header_slide_index;
-				const currentSignal = signals[currentIndex];
 
-				// get the position of the selected signal
-				const currentSignalPosition =
-					currentSignal.getBoundingClientRect().left -
-					signalsBox.current.getBoundingClientRect().left -
-					6.5;
+	const slideIndicator = useCallback(() => {
+		if (featured_products.length > 0 || current_header_slide_index) {
+			const signals = document.querySelectorAll(".header-signal");
+			const indicator = document.querySelector(".header-signal-indi");
+			const currentIndex = current_header_slide_index;
+			const currentSignal = signals[currentIndex];
 
-				// slide indicator to the current selected signal
-				indicator.style.transform = `translateX(${currentSignalPosition}px)`;
-			}
-		};
+			// get the position of the selected signal
+			const currentSignalPosition =
+				currentSignal.getBoundingClientRect().left -
+				signalsBox.current.getBoundingClientRect().left -
+				6.5;
 
-		slideIndicator();
+			// slide indicator to the current selected signal
+			indicator.style.transform = `translateX(${currentSignalPosition}px)`;
+		}
 	}, [current_header_slide_index, featured_products]);
+
+	useEffect(() => {
+		slideIndicator();
+	}, [slideIndicator]);
+
+	useEffect(() => {
+		window.addEventListener('resize', slideIndicator);
+
+		return () => {
+			window.removeEventListener('resize', slideIndicator);
+		}
+	})
 
 	return (
 		<div className='header-slider-controls'>

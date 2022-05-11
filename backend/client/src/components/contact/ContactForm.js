@@ -33,7 +33,7 @@ const ContactForm = () => {
 				placeholder='message'
 				required
 			/>
-			<div className='form-group'>
+			<div className='form-group btn-contact-container'>
 				<div className='form-control'>
 					<input type='checkbox' name='tc' id='tc' className='form-checky' />
 					<label htmlFor='tc' className='cheky-box'></label>

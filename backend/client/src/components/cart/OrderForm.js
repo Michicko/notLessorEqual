@@ -150,7 +150,7 @@ const OrderForm = () => {
 					type='text'
 					name='coupon'
 					id='coupon'
-					className='text-input light'
+					className='text-input light coupon-input'
 					placeholder='coupon'
 				/>
 				<button type='submit' className='btn btn-primary order-btn'>
