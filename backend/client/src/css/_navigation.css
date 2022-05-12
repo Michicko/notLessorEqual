@@ -112,7 +112,7 @@
 		height: 100vh;
 		position: fixed;
 		top: 0;
-		left: -8rem;
+		left: -10rem;
 		z-index: 1500;
 		opacity: 0;
 		width: 0;
@@ -125,7 +125,7 @@
 		width: 4rem;
 		position: fixed;
 		top: 0;
-		left: -4rem;
+		left: -10rem;
 		background: var(--primary-dark-color);
 		z-index: 1000;
 

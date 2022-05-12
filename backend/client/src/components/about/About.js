@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AboutTextSection from "./AboutTextSection"
 import AboutVideoDisp from "./AboutVideoDisp"
 import videoList from "../../utils/videoList";
@@ -6,8 +6,12 @@ import AboutVideos from "./AboutVideos";
 
 const About = () => {
   const [videos, setVideos] = useState(videoList);
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [currentVideo, setCurrentVideo] = useState(videos[currentIndex]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+	const [currentVideo, setCurrentVideo] = useState(videos[currentIndex]);
+	
+	useEffect(() => {
+		setCurrentVideo(videos[currentIndex]);
+	}, [currentIndex, videos])
   
   return (
 		<section className='about-section' id='about'>
