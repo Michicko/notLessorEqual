@@ -23,12 +23,11 @@ const Navigation = () => {
 
 	// close sidebar if link clicked
 	useEffect(() => {
-		if (isMobile) {
-			if (linkClicked) {
-				setIsSidebarOpened(false);
-				setLinkClicked(false);
-			}
+		if (isMobile && linkClicked) {
+			setIsSidebarOpened(false);
+			setLinkClicked(false);
 		}
+		
 	}, [linkClicked, isMobile]);
 
 	// if it is not mobile close sidebar
