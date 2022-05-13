@@ -8,6 +8,8 @@ const About = () => {
   const [videos, setVideos] = useState(videoList);
   const [currentIndex, setCurrentIndex] = useState(0);
 	const [currentVideo, setCurrentVideo] = useState(videos[currentIndex]);
+	const [changedVideo, setChangedVideo] = useState(false);
+		const [videoPlaying, setVideoPlaying] = useState(false);
 	
 	useEffect(() => {
 		setCurrentVideo(videos[currentIndex]);
@@ -21,14 +23,25 @@ const About = () => {
 					{/* about text and about video display */}
 					<div className='about-box'>
 						<AboutTextSection />
-						<AboutVideoDisp currentVideo={currentVideo} />
+						<AboutVideoDisp
+							currentVideo={currentVideo}
+							currentIndex={currentIndex}
+							changedVideo={changedVideo}
+							setChangedVideo={setChangedVideo}
+							videoPlaying={videoPlaying}
+							setVideoPlaying={setVideoPlaying}
+						/>
 					</div>
 					{/* video display */}
 					<AboutVideos
 						videoList={videoList}
 						currentIndex={currentIndex}
-						setCurrentIndex
-						={setCurrentIndex}/>
+						changedVideo={changedVideo}
+						setChangedVideo={setChangedVideo}
+						setCurrentIndex={setCurrentIndex}
+						videoPlaying={videoPlaying}
+					setVideoPlaying={setVideoPlaying}
+					/>
 				</div>
 			</div>
 		</section>

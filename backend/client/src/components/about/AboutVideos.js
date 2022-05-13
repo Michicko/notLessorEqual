@@ -5,7 +5,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BiPlay } from "react-icons/bi";
 
-const AboutVideos = ({ videoList, currentIndex, setCurrentIndex }) => {
+const AboutVideos = ({
+	videoList,
+	currentIndex,
+	setCurrentIndex,
+	setVideoPlaying,
+}) => {
 	const settings = {
 		dots: false,
 		arrows: false,
@@ -60,10 +65,19 @@ const AboutVideos = ({ videoList, currentIndex, setCurrentIndex }) => {
 		],
 	};
 
-	const setActiveVideo = (index) => {
-		setCurrentIndex(index)
+	const stopCurentPlaying = () => {
+		const currentPlayingVideo = document.querySelector(
+			".about-active-video.playing"
+		);
+		currentPlayingVideo.pause();
 	};
-	
+
+	const setActiveVideo = (index) => {
+		setCurrentIndex(index);
+		stopCurentPlaying();
+		setVideoPlaying(false);
+	};
+
 	return (
 		<div className='about-videos'>
 			<div className='about-slider-box'>
@@ -120,7 +134,12 @@ const AboutVideos = ({ videoList, currentIndex, setCurrentIndex }) => {
 									Sorry, your browser doesn't support embedded videos.
 								</video>
 								<div className='about-video-ctrl'>
-									<BiPlay className='about-ctrl-icon' onClick={ () => {setActiveVideo(i)}}/>
+									<BiPlay
+										className='about-ctrl-icon'
+										onClick={() => {
+											setActiveVideo(i);
+										}}
+									/>
 								</div>
 								<h4 className='about-video-caption'>{video.name}</h4>
 							</div>

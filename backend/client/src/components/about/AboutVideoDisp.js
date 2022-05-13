@@ -1,25 +1,29 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import videoList from "../../utils/videoList";
 import { BiPlay, BiPause } from "react-icons/bi";
+import CurrentVideo from "./CurrentVideo";
+import CurrentDummyVideo from "./CurrentDummyVideo";
 
-const AboutVideoDisp = ({ currentVideo }) => {
-	const [videoPlaying, setVideoPlaying] = useState(false);
-
+const AboutVideoDisp = ({ currentIndex, videoPlaying, setVideoPlaying }) => {
 	const checkVideoEnded = () => {
 		setVideoPlaying(false);
 	};
 
 	const playVideo = () => {
-		const video = document.querySelector(".about-active-video");
-		if (video == null) {
+		const videoContainer = document.querySelector(
+			".about-video-disp-act.current"
+		);
+		const video = videoContainer.firstElementChild;
+		if (!video) {
 			return;
 		}
 		video.addEventListener("ended", checkVideoEnded);
 
-		if (!videoPlaying) {
+		if (videoList[currentIndex].type === "video") {
 			video.play();
 			video.muted = true;
 			setVideoPlaying(true);
+			video.classList.add("playing");
 		}
 
 		return () => {
@@ -28,44 +32,49 @@ const AboutVideoDisp = ({ currentVideo }) => {
 	};
 
 	const pauseVideo = () => {
-		const video = document.querySelector(".about-active-video");
-		
-		if (videoPlaying) {
-			video.pause();
-			setVideoPlaying(false);
+		const videoContainer = document.querySelector(
+			".about-video-disp-act.current"
+		);
+		const video = videoContainer.firstElementChild;
+
+		if (video === null) {
+			return;
 		}
-	}
+		video.pause();
+		setVideoPlaying(false);
+		video.classList.remove("playing");
+	};
 
 	return (
 		<div className='about-video-disp'>
-			{/* if video */}
-			{currentVideo.type === "video" ? (
-				<video className='about-active-video'>
-					<source
-						src={
-							require(`../../assets/videos/${currentVideo.name}.mp4`).default
+			{videoList.map((video, i) => {
+				if (video.type === "image") {
+					return (
+						<div
+							className={
+								currentIndex === i
+									? "about-video-disp-act current"
+									: "about-video-disp-act"
+							}
+							key={i}
+						>
+							<CurrentDummyVideo video={video} />
+						</div>
+					);
+				}
+				return (
+					<div
+						className={
+							currentIndex === i
+								? "about-video-disp-act current"
+								: "about-video-disp-act"
 						}
-						type='video/mp4'
-					></source>
-					<source
-						src={
-							require(`../../assets/videos/${currentVideo.name}.webm`).default
-						}
-						type='video/webm'
-					></source>
-					Sorry, your browser doesn't support embedded videos.
-				</video>
-			) : (
-				<figure className='about-active-dummy-vid'>
-					<img
-						src={
-							require(`../../assets/images/${currentVideo.name}.jpg`).default
-						}
-						alt=''
-						className='about-active-dummy-img'
-					/>
-				</figure>
-			)}
+						key={i}
+					>
+						<CurrentVideo video={video} />
+					</div>
+				);
+			})}
 
 			<div className='about-active-video-ctrl'>
 				{!videoPlaying && (
@@ -74,7 +83,6 @@ const AboutVideoDisp = ({ currentVideo }) => {
 						onClick={playVideo}
 					/>
 				)}
-				{/* if image */}
 
 				{videoPlaying && (
 					<BiPause
