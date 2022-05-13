@@ -69,6 +69,9 @@ const AboutVideos = ({
 		const currentPlayingVideo = document.querySelector(
 			".about-active-video.playing"
 		);
+		if (currentPlayingVideo === null) {
+			return
+		}
 		currentPlayingVideo.pause();
 	};
 
