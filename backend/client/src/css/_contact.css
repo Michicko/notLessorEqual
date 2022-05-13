@@ -29,11 +29,19 @@
   margin-bottom: 1rem;
 }
 
-.contact-form-container p{
+.contact-form-container>*:nth-child(2){
   font-size: 1.4rem;
   font-weight: 400;
   color: rgba(255, 243, 232, .5);
   margin-bottom: 2rem;
+}
+
+.contact-alert{
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgb(79, 221, 79) !important;
+  margin-top: 2rem;
 }
 
 
