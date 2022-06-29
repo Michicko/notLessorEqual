@@ -33,7 +33,14 @@ const ContactForm = ({
 		if (submitBtnDisabled) {
 			submitBtn.current.disabled = true;
 		} else {
-				submitBtn.current.disabled = false;
+			submitBtn.current.disabled = false;
+			setFormState({
+				name: "",
+				email: "",
+				phone: "",
+				message: "",
+			});
+			setTc(false);
 		}
 	}, [submitBtnDisabled])
 
@@ -46,6 +53,7 @@ const ContactForm = ({
 		setMessageSent(true);
 		setSubmitBtnDisabled(true);
 		console.log({ ...formState, tc });
+		
 	};
 
 	return (

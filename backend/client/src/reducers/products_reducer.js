@@ -97,24 +97,6 @@ const ProductReducer = (state, action) => {
 		};
 	}
 
-	if (action.type === NEXT_CATALOG_SLIDE) {
-		let current_catalog_slide_index = state.current_catalog_slide_index;
-		current_catalog_slide_index = state.current_catalog_slide_index + 1;
-		if (state.current_catalog_slide_index >= state.products.length - 1) {
-			current_catalog_slide_index = state.products.length - 1;
-		}
-		return { ...state, current_catalog_slide_index };
-	}
-
-	if (action.type === PREVIOUS_CATALOG_SLIDE) {
-		let current_catalog_slide_index = state.current_catalog_slide_index;
-		current_catalog_slide_index = state.current_catalog_slide_index - 1;
-		if (state.current_catalog_slide_index <= 0) {
-			current_catalog_slide_index = 0;
-		}
-		return { ...state, current_catalog_slide_index };
-	}
-
 	if (action.type === SET_CATALOG_SLIDE_PRODUCT) {
 		const current_catalog_slide_product =
 			state.products[state.current_catalog_slide_index];

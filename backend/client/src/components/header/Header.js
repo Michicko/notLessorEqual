@@ -24,8 +24,10 @@ const Header = () => {
 								</h4>
 								<div className='header-btn-container'>
 									<button
-										className='btn btn-secondary header-btn'
-										onClick={() => add_bagpack_to_cart(current_header_slide_product, 1)}
+										className='btn btn-primary header-btn'
+										onClick={() =>
+											add_bagpack_to_cart(current_header_slide_product, 1)
+										}
 									>
 										Add to cart
 									</button>

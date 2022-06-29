@@ -11,6 +11,7 @@
 
 /* components */
 @import '_header.css';
+@import '_slider.css';
 @import '_contact.css';
 @import '_about.css';
 @import '_catalog.css';

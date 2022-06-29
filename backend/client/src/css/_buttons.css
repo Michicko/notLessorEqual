@@ -11,10 +11,11 @@
   font-weight: 500;
   font-family: Tirong;
   cursor: pointer;
+  transition: background var(--base-duration) var(--base-ease);
 }
 
 .btn-secondary{
-  background: var(--primary-light-color);
+  background: linear-gradient(to right, rgb(50, 47, 36,1),rgb(122, 121, 97, .85));
   color: var(--light-color);
 }
 
@@ -24,12 +25,20 @@
    transition: all .2s ease;
 }
 
+
 .close-cart-btn{
    min-width: 25rem;
 }
 
 .btn-primary:hover{
    background: linear-gradient(to right, rgba(255, 243, 232, .65),rgba(255, 243, 232, .25));
+}
+
+
+.btn-secondary:hover, 
+.btn-secondary:active,
+.btn-secondary.active{
+  background: linear-gradient(to right, rgb(122, 121, 97, .85),rgb(50, 47, 36,1));
 }
 
 .btn-outline{

@@ -25,7 +25,7 @@ const initialState = {
 	featured_products: [],
 	current_header_slide_index: 0,
 	current_header_slide_product: {},
-	current_catalog_slide_index: 2,
+	current_catalog_slide_index: 1,
 	current_catalog_slide_product: {},
 };
 
@@ -47,14 +47,6 @@ export const ProductsProvider = ({ children }) => {
 
 	const selectHeaderSlide = (index) => {
 		dispatch({ type: SET_HEADER_SLIDE_INDEX, payload: index });
-	};
-
-	const nextCatalogSlide = () => {
-		dispatch({ type: NEXT_CATALOG_SLIDE });
-	};
-
-	const prevCatalogSlide = () => {
-		dispatch({ type: PREVIOUS_CATALOG_SLIDE });
 	};
 
 	useEffect(() => {
@@ -116,8 +108,6 @@ export const ProductsProvider = ({ children }) => {
 				nextHeaderSlide,
 				prevHeaderSlide,
 				selectHeaderSlide,
-				nextCatalogSlide,
-				prevCatalogSlide,
 			}}
 		>
 			{children}
