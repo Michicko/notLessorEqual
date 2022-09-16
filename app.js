@@ -30,11 +30,11 @@ const bagpackRouter = require("./routes/bagpackRoutes");
 app.use("/api/v1/bagpacks", bagpackRouter);
 
 // render client
-app.use(express.static(path.join(__dirname, "/client/build")));
+// app.use(express.static(path.join(__dirname, "/client/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+// });
 
 app.all("*", (req, res, next) => {
   res.status(404).json({
