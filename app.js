@@ -7,12 +7,13 @@ const path = require("path");
 const globalErrorHandler = require("./controller/errorControllers");
 
 // cors
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true, //access-control-allow-credentials:true
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true, //access-control-allow-credentials:true
+//   })
+// );
+app.use(cors());
 
 // middlewares
 app.use(express.json({ limit: "10kb" }));
