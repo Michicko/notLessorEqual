@@ -81,8 +81,8 @@ export const ProductsProvider = ({ children }) => {
     const getProducts = async () => {
       try {
         dispatch({ type: GET_PRODUCTS_BEGINS });
-        const res = await axios.get("http://127.0.0.1:8000/api/v1/bagpacks");
-        // const res = await axios.get("/api/v1/bagpacks");
+        // const res = await axios.get("http://127.0.0.1:8000/api/v1/bagpacks");
+        const res = await axios.get("/api/v1/bagpacks");
 
         if (res.data.status === "success") {
           dispatch({ type: GET_PRODUCTS_SUCCESS, payload: res.data.data });
